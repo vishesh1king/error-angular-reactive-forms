@@ -1,1 +1,16 @@
-/* Add application styles & imports to this file! */
+/* You can add global styles to this file, and also import other style files */
+.main-form {
+    text-align: center;
+}
+.form-control {
+    margin: 10px;
+}
+.main-form button {
+    margin-left: 20px;
+}
+.error-msg {
+    color: #f50000;
+}
+.ng-invalid.ng-touched {
+    border-color: #f50000;
+}

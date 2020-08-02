@@ -1,4 +1,21 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<form class="main-form" (submit)="login()">
+  <h3>Form</h3>
+  <div class="form-control">
+    <app-input [type]="'text'" [placeholder]="'Name'" [control]="loginForm.get('name')"
+              [minLength]="3" [maxLength]="25"
+              [id]="'name'" [formGroup]="loginForm" [label]="'Name'"></app-input>
+  </div>
+  <div class="form-control">
+    <app-input [type]="'email'" [placeholder]="'Email ID'" [control]="loginForm.get('email')"
+              [minLength]="6" [maxLength]="55"
+              [id]="'email'" [formGroup]="loginForm" [label]="'Email ID'"></app-input>
+  </div>
+  <div class="form-control">
+    <app-password [placeholder]="'Password'" [control]="loginForm.get('password')"
+              [minLength]="8" [maxLength]="15"
+              [id]="'password'" [formGroup]="loginForm" [label]="'Password'"></app-password>
+  </div>
+  <button type="submit">
+    Save
+  </button>
+</form>
