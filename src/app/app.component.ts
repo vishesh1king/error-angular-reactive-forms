@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UtilityFunctions } from './app.utility';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +9,27 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AppComponent {
 
+  constructor(
+    private util: UtilityFunctions
+  ) { }
+
   loginForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.maxLength(25), Validators.minLength(3)]),
-    email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(45), Validators.minLength(8)]),
-    password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,}$/g),
-                                  Validators.maxLength(16), Validators.minLength(8)])
+    name: new FormControl('', [
+          this.util.requiredValidator('Name'),
+          this.util.minlengthValidator('Name', 3),
+          this.util.maxlengthValidator('Name', 25),
+        ]),
+    email: new FormControl('', [
+          this.util.requiredValidator('Email ID'),
+          this.util.emailValidator,
+          this.util.minlengthValidator('Email ID', 8),
+          this.util.maxlengthValidator('Email ID', 45),
+        ]),
+    password: new FormControl('', [
+          this.util.requiredValidator('Password'),
+          this.util.minlengthValidator('Password', 8),
+          this.util.maxlengthValidator('Password', 16),
+        ]),
   });
 
   login() {
